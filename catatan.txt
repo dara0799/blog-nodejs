@@ -1,0 +1,32 @@
+200 = ok
+301 = resource move
+404 = not found
+500 = internal server error
+
+100 range = informational response
+200 range = success codes
+300 range = codes for redirect
+400 range = user or client error codes
+500 range = server error codes
+
+middleware = codes which runs (on the server) between getting a request and sending a response, codes runs from top to bottom
+ketika response sudah diberikan ke browser middleware func tidak dapat berjalan 
+use() -> next() lanjut ke next code
+
+middleware ex:
+-logger middleware to log details of every request
+-authentication check middleware for protected routes
+-middleware ro parse json data from request
+-return 404 page
+
+schema mendefinisikan struktur dari tipe data/document
+model memperbolehkan kita berkomunikasi dengan db collection
+membuat schema -> membuat model berdasarkan schema -> model dapat get, save, delete, dll db blog collections
+
+route parameters
+the variable parts of the route that may change value
+bagian variabel dari rute yang dapat mengubah nilai
+
+express route untuk mengatur router, dan membuat aplikasi lebih
+modular
+

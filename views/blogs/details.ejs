@@ -1,0 +1,38 @@
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+
+<body>
+  <%- include("../partials/nav.ejs") %>
+
+  <div class="details content">
+    <h2><%= blog.title %></h2>
+    <div class="content">
+      <p><%= blog.body %></p>
+    </div>
+    <!-- data-doc (doc adalah nama variabelnya) untuk menyimpan data id -->
+    <a class="delete" data-doc="<%= blog._id %>">
+      <img src="/trashcan.png" alt="delete icon"/>
+    </a>
+  </div>
+
+  <%- include("../partials/footer.ejs") %>
+
+  <script>
+    // untuk menjalankan front end javascript ketika klik button delete
+    const trashcan = document.querySelector('a.delete');
+    trashcan.addEventListener('click', (e) => {
+      // dataset.doc mengarah ke data-doc
+      const endpoint = `/blogs/${trashcan.dataset.doc}`;
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      // merubah response ke javascript object
+      .then(response => response.json())
+      //redirect ke home
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+    
+  </script>
+</body>
+</html>
